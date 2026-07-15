@@ -1,272 +1,5 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+/* Favoritos */
 
-body{
-
-font-family:'Poppins',sans-serif;
-
-transition:.4s;
-
-min-height:100vh;
-
-}
-
-body.dark{
-
-background:#111;
-
-color:white;
-
-}
-
-body.light{
-
-background:#f4f4f4;
-
-color:#222;
-
-}
-
-header{
-
-padding:40px 20px;
-
-text-align:center;
-
-}
-
-header h1{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:3rem;
-
-color:#d4af37;
-
-}
-
-header p{
-
-margin-top:10px;
-
-opacity:.8;
-
-}
-
-.topo{
-
-margin-top:30px;
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:15px;
-
-}
-
-input{
-
-width:320px;
-
-max-width:90%;
-
-padding:14px;
-
-border:none;
-
-border-radius:12px;
-
-font-size:16px;
-
-}
-
-button{
-
-padding:14px 18px;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:scale(1.05);
-
-}
-
-select{
-
-margin-top:25px;
-
-padding:12px;
-
-border-radius:12px;
-
-font-size:16px;
-
-}
-
-#capaCategoria{
-
-width:90%;
-
-max-width:1100px;
-
-margin:30px auto;
-
-padding:50px;
-
-border-radius:25px;
-
-background:linear-gradient(135deg,#222,#444);
-
-text-align:center;
-
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-
-}
-
-#capaCategoria h2{
-
-font-size:2.5rem;
-
-font-family:'Cormorant Garamond',serif;
-
-margin-bottom:15px;
-
-}
-
-#biblioteca{
-
-width:90%;
-
-max-width:1200px;
-
-margin:auto;
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-
-gap:30px;
-
-padding-bottom:60px;
-
-}
-
-.card{
-
-border-radius:20px;
-
-padding:25px;
-
-background:#1d1d1d;
-
-transition:.4s;
-
-cursor:pointer;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.card h2{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:2rem;
-
-margin-bottom:10px;
-
-}
-
-.card .categoria{
-
-font-size:14px;
-
-opacity:.7;
-
-margin-bottom:10px;
-
-}
-
-.card .data{
-
-font-size:14px;
-
-margin-bottom:20px;
-
-}
-
-.card .dedicatoria{
-
-font-style:italic;
-
-margin-bottom:20px;
-
-}
-
-.card .texto{
-
-font-family:'EB Garamond',serif;
-
-font-size:1.2rem;
-
-line-height:1.8;
-
-white-space:pre-line;
-
-}
-
-footer{
-
-padding:30px;
-
-text-align:center;
-
-opacity:.7;
-
-}
-
-@media(max-width:700px){
-
-header h1{
-
-font-size:2.3rem;
-
-}
-
-#capaCategoria{
-
-padding:30px;
-
-}
-
-.card{
-
-padding:20px;
-
-}
-
-  }
 .topo-card{
 
 display:flex;
@@ -279,9 +12,1024 @@ margin-bottom:15px;
 
 }
 
-.favorito{
+.btnFavorito{
 
-font-size:28px;
+background:none;
+
+border:none;
+
+font-size:30px;
+
+cursor:pointer;
+
+}
+
+.btnFavorito:hover{
+
+transform:scale(1.2);
+
+}
+
+
+/* Cores das categorias */
+
+.romantica{
+
+border-left:6px solid #ff4f81;
+
+}
+
+.melancolica{
+
+border-left:6px solid #4fa3ff;
+
+}
+
+.esperanca{
+
+border-left:6px solid #ffd54f;
+
+}
+
+.reflexiva{
+
+border-left:6px solid #9c7bff;
+
+}
+
+.intensa{
+
+border-left:6px solid #ff3b30;
+
+}
+
+
+#contador{
+
+margin-top:20px;
+
+font-weight:bold;
+
+font-size:18px;
+
+}
+/* ==========================================
+   BIBLIOTECA DE POESIAS
+   CSS - PARTE 2
+   Capa + Cards
+========================================== */
+
+/* ---------- CAPA DA CATEGORIA ---------- */
+
+#capaCategoria{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:20px auto 40px;
+
+    padding:60px 40px;
+
+    border-radius:25px;
+
+    background:linear-gradient(135deg,#222,#444);
+
+    box-shadow:var(--sombra);
+
+    text-align:center;
+
+    transition:.4s;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+#capaCategoria::before{
+
+    content:"📖";
+
+    position:absolute;
+
+    font-size:130px;
+
+    opacity:.08;
+
+    right:40px;
+
+    top:20px;
+
+}
+
+#capaCategoria h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+
+    color:white;
+
+}
+
+#capaCategoria p{
+
+    font-size:1.1rem;
+
+    color:#eee;
+
+}
+
+/* ---------- BIBLIOTECA ---------- */
+
+#biblioteca{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+    gap:30px;
+
+    padding-bottom:60px;
+
+}
+
+/* ---------- CARD ---------- */
+
+.card{
+
+    background:var(--cor-card);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    border:1px solid var(--cor-borda);
+
+    box-shadow:var(--sombra);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* Faixa lateral */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:6px;
+
+    height:100%;
+
+    background:var(--cor-dourado);
+
+}
+
+/* ---------- TOPO ---------- */
+
+.topo-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+/* ---------- TÍTULO ---------- */
+
+.card h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2rem;
+
+    color:var(--cor-dourado);
+
+}
+
+/* ---------- FAVORITO ---------- */
+
+.btnFavorito{
+
+    background:none;
+
+    border:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    padding:0;
+
+}
+
+.btnFavorito:hover{
+
+    transform:scale(1.25);
+
+}
+
+/* ---------- INFORMAÇÕES ---------- */
+
+.categoria,
+
+.data,
+
+.dedicatoria{
+
+    margin-bottom:12px;
+
+    color:var(--cor-texto2);
+
+    font-size:.95rem;
+
+}
+
+.dedicatoria{
+
+    font-style:italic;
+
+    border-left:3px solid var(--cor-dourado);
+
+    padding-left:10px;
+
+}
+
+/* ---------- TEXTO ---------- */
+
+.texto{
+
+    margin-top:18px;
+
+    font-family:'EB Garamond',serif;
+
+    font-size:1.25rem;
+
+    line-height:1.9;
+
+    white-space:pre-line;
+
+}
+
+/* ---------- CORES POR CATEGORIA ---------- */
+
+.romantica::before{
+
+    background:#ff4f81;
+
+}
+
+.melancolica::before{
+
+    background:#4fa3ff;
+
+}
+
+.reflexiva::before{
+
+    background:#9c7bff;
+
+}
+
+.esperanca::before{
+
+    background:#ffd54f;
+
+}
+
+.intensa::before{
+
+    background:#ff3b30;
+
+  }
+/* ==========================================
+   BIBLIOTECA DE POESIAS
+   CSS - PARTE 3
+   Responsividade + Animações
+========================================== */
+
+
+/* ==========================
+   RODAPÉ
+========================== */
+
+footer{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    margin-top:40px;
+
+    color:var(--cor-texto2);
+
+    border-top:1px solid var(--cor-borda);
+
+}
+
+
+
+/* ==========================
+   ANIMAÇÃO DOS CARDS
+========================== */
+
+.card{
+
+    animation:aparecer .6s ease;
+
+}
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* ==========================
+   ANIMAÇÃO DA CAPA
+========================== */
+
+#capaCategoria{
+
+    animation:fade .7s;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* ==========================
+   SCROLL
+========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--cor-dourado);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--cor-fundo);
+
+}
+
+
+
+/* ==========================
+   SELEÇÃO DE TEXTO
+========================== */
+
+::selection{
+
+    background:var(--cor-dourado);
+
+    color:white;
+
+}
+
+
+
+/* ==========================
+   BOTÕES
+========================== */
+
+button{
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    filter:brightness(110%);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+
+
+/* ==========================
+   INPUT
+========================== */
+
+input{
+
+    transition:.3s;
+
+}
+
+input:hover{
+
+    box-shadow:0 0 10px rgba(212,175,55,.3);
+
+}
+
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+header{
+
+padding:30px 15px;
+
+}
+
+header h1{
+
+font-size:2.2rem;
+
+}
+
+header p{
+
+font-size:.95rem;
+
+}
+
+.topo{
+
+flex-direction:column;
+
+}
+
+#pesquisa{
+
+width:100%;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+#categorias{
+
+width:100%;
+
+}
+
+#capaCategoria{
+
+padding:35px 20px;
+
+}
+
+#capaCategoria h2{
+
+font-size:2rem;
+
+}
+
+#biblioteca{
+
+grid-template-columns:1fr;
+
+gap:20px;
+
+}
+
+.card{
+
+padding:20px;
+
+}
+
+.card h2{
+
+font-size:1.8rem;
+
+}
+
+.texto{
+
+font-size:1.15rem;
+
+}
+
+}
+
+
+
+/* ==========================
+   TABLET
+========================== */
+
+@media(min-width:769px) and (max-width:1024px){
+
+#biblioteca{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+
+/* ==========================
+   DESKTOP GRANDE
+========================== */
+
+@media(min-width:1300px){
+
+#biblioteca{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+
+
+/* ==========================
+   EFEITO DE VIDRO
+========================== */
+
+body.dark .card{
+
+backdrop-filter:blur(10px);
+
+}
+
+body.light .card{
+
+background:rgba(255,255,255,.95);
+
+}
+
+
+
+/* ==========================
+   TRANSIÇÕES
+========================== */
+
+body,
+.card,
+button,
+input,
+select,
+#capaCategoria{
+
+transition:.35s ease;
+
+  }
+/* ==========================================
+   BIBLIOTECA DE POESIAS
+   CSS - PARTE 4
+   Efeitos Visuais Premium
+========================================== */
+
+/* ---------- FUNDO ANIMADO ---------- */
+
+body.dark{
+
+background-image:
+radial-gradient(circle at 20% 20%,rgba(212,175,55,.08),transparent 35%),
+radial-gradient(circle at 80% 30%,rgba(255,255,255,.03),transparent 40%),
+radial-gradient(circle at 50% 90%,rgba(212,175,55,.04),transparent 35%);
+
+}
+
+
+/* ---------- BRILHO DOS CARDS ---------- */
+
+.card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+top:-120%;
+
+left:-60%;
+
+width:60%;
+
+height:300%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.12),
+
+transparent
+
+);
+
+transform:rotate(25deg);
+
+transition:.8s;
+
+}
+
+.card:hover::after{
+
+left:140%;
+
+}
+
+
+/* ---------- LIVRO ---------- */
+
+.card{
+
+border-radius:18px;
+
+}
+
+.card:hover{
+
+box-shadow:
+
+0 20px 45px rgba(0,0,0,.35);
+
+}
+
+
+/* ---------- TÍTULO ---------- */
+
+.card h2{
+
+transition:.3s;
+
+}
+
+.card:hover h2{
+
+letter-spacing:1px;
+
+}
+
+
+/* ---------- TEXTO ---------- */
+
+.texto{
+
+text-align:justify;
+
+}
+
+
+/* ---------- DEDICATÓRIA ---------- */
+
+.dedicatoria{
+
+background:rgba(212,175,55,.08);
+
+padding:12px;
+
+border-radius:10px;
+
+}
+
+
+/* ---------- BOTÕES ---------- */
+
+button{
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,.2);
+
+}
+
+button:hover{
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.3);
+
+}
+
+
+/* ---------- PESQUISA ---------- */
+
+#pesquisa{
+
+box-shadow:
+
+0 5px 18px rgba(0,0,0,.08);
+
+}
+
+
+/* ---------- CAPA ---------- */
+
+#capaCategoria{
+
+background-size:cover;
+
+background-position:center;
+
+}
+
+
+/* ---------- SCROLL DOS POEMAS ---------- */
+
+.texto{
+
+max-height:320px;
+
+overflow:auto;
+
+padding-right:6px;
+
+}
+
+.texto::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.texto::-webkit-scrollbar-thumb{
+
+background:var(--cor-dourado);
+
+border-radius:10px;
+
+}
+
+
+/* ---------- SOMBRA ---------- */
+
+.card:hover{
+
+transform:
+
+translateY(-8px)
+
+scale(1.02);
+
+}
+
+
+/* ---------- TRANSIÇÃO ---------- */
+
+.card,
+.card::after{
+  /* ==========================================
+   BIBLIOTECA DE POESIAS
+   CSS - PARTE 5
+   Modo Leitura
+========================================== */
+
+
+/* ========= MODAL ========= */
+
+#leitor{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.85);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+padding:25px;
+
+z-index:9999;
+
+backdrop-filter:blur(8px);
+
+animation:fadeModal .4s;
+
+}
+
+
+/* ========= LIVRO ========= */
+
+#livro{
+
+width:100%;
+
+max-width:900px;
+
+max-height:90vh;
+
+overflow:auto;
+
+background:var(--cor-superficie);
+
+color:var(--cor-texto);
+
+border-radius:20px;
+
+padding:45px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+animation:abrirLivro .45s ease;
+
+}
+
+
+/* ========= TÍTULO ========= */
+
+#livro h1{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:3rem;
+
+margin-bottom:12px;
+
+color:var(--cor-dourado);
+
+}
+
+
+/* ========= METADADOS ========= */
+
+.meta{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+margin-bottom:25px;
+
+color:var(--cor-texto2);
+
+font-size:.95rem;
+
+}
+
+
+/* ========= DEDICATÓRIA ========= */
+
+#livro .dedicatoria{
+
+margin:25px 0;
+
+padding:18px;
+
+border-left:5px solid var(--cor-dourado);
+
+background:rgba(212,175,55,.08);
+
+font-style:italic;
+
+border-radius:10px;
+
+}
+
+
+/* ========= TEXTO ========= */
+
+#livro .conteudo{
+
+font-family:"EB Garamond",serif;
+
+font-size:1.45rem;
+
+line-height:2.1;
+
+white-space:pre-line;
+
+text-align:justify;
+
+}
+
+
+/* ========= BOTÕES ========= */
+
+.acoes{
+
+margin-top:35px;
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.acoes button{
+
+min-width:140px;
+
+}
+
+
+/* ========= FECHAR ========= */
+
+#fecharLivro{
+
+position:absolute;
+
+top:25px;
+
+right:25px;
+
+font-size:35px;
 
 background:none;
 
@@ -289,12 +1037,309 @@ border:none;
 
 cursor:pointer;
 
-transition:.3s;
+color:white;
 
 }
 
-.favorito:hover{
 
-transform:scale(1.3);
+/* ========= ANIMAÇÕES ========= */
+
+@keyframes abrirLivro{
+
+from{
+
+transform:scale(.85);
+
+opacity:0;
 
 }
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes fadeModal{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+
+/* ========= MOBILE ========= */
+
+@media(max-width:700px){
+
+#livro{
+
+padding:25px;
+
+}
+
+#livro h1{
+
+font-size:2.2rem;
+
+}
+
+#livro .conteudo{
+
+font-size:1.2rem;
+
+line-height:1.9;
+
+}
+
+.acoes{
+
+flex-direction:column;
+
+}
+
+.acoes button{
+
+width:100%;
+
+}
+
+  }
+  /* ==========================================
+   BIBLIOTECA DE POESIAS
+   CSS - PARTE 6
+   Fundos Animados por Categoria
+========================================== */
+
+
+/* ==========================================
+   CAMADA DE EFEITOS
+========================================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+z-index:-1;
+
+opacity:.35;
+
+transition:.6s;
+
+animation:fundo 18s linear infinite;
+
+}
+
+
+/* ==========================================
+   ROMÂNTICA
+========================================== */
+
+body.romantica::before{
+
+background:
+
+radial-gradient(circle at 20% 20%,rgba(255,120,170,.18),transparent 20%),
+
+radial-gradient(circle at 80% 30%,rgba(255,180,210,.18),transparent 25%),
+
+radial-gradient(circle at 50% 80%,rgba(255,90,140,.15),transparent 22%);
+
+}
+
+
+/* ==========================================
+   MELANCÓLICA
+========================================== */
+
+body.melancolica::before{
+
+background:
+
+radial-gradient(circle at 25% 15%,rgba(80,120,255,.12),transparent 20%),
+
+radial-gradient(circle at 80% 25%,rgba(150,180,255,.08),transparent 30%),
+
+linear-gradient(#0d1b2a,#1b263b);
+
+}
+
+
+/* ==========================================
+   REFLEXIVA
+========================================== */
+
+body.reflexiva::before{
+
+background:
+
+radial-gradient(circle at 15% 20%,rgba(205,170,90,.18),transparent 20%),
+
+radial-gradient(circle at 80% 75%,rgba(130,90,40,.15),transparent 25%),
+
+linear-gradient(#3b2f2f,#5d4037);
+
+}
+
+
+/* ==========================================
+   ESPERANÇA
+========================================== */
+
+body.esperanca::before{
+
+background:
+
+radial-gradient(circle at 50% 20%,rgba(255,255,180,.30),transparent 25%),
+
+radial-gradient(circle at 20% 80%,rgba(255,230,120,.20),transparent 20%),
+
+linear-gradient(#5dade2,#aed6f1);
+
+}
+
+
+/* ==========================================
+   INTENSA
+========================================== */
+
+body.intensa::before{
+
+background:
+
+radial-gradient(circle at 50% 50%,rgba(255,50,50,.22),transparent 30%),
+
+radial-gradient(circle at 20% 80%,rgba(255,120,0,.15),transparent 20%),
+
+linear-gradient(#1a0000,#330000);
+
+}
+
+
+/* ==========================================
+   ANIMAÇÃO
+========================================== */
+
+@keyframes fundo{
+
+0%{
+
+transform:scale(1) rotate(0deg);
+
+}
+
+50%{
+
+transform:scale(1.08) rotate(1deg);
+
+}
+
+100%{
+
+transform:scale(1) rotate(0deg);
+
+}
+
+}
+
+
+/* ==========================================
+   TRANSIÇÕES
+========================================== */
+
+body{
+
+transition:background .6s,color .6s;
+
+}
+
+.card{
+
+transition:
+
+transform .35s,
+
+box-shadow .35s,
+
+background .35s;
+
+}
+
+
+/* ==========================================
+   BRILHO NAS CAPAS
+========================================== */
+
+#capaCategoria{
+
+overflow:hidden;
+
+}
+
+#capaCategoria::after{
+
+content:"";
+
+position:absolute;
+
+top:-100%;
+
+left:-100%;
+
+width:200%;
+
+height:200%;
+
+background:
+
+linear-gradient(
+
+120deg,
+
+transparent,
+
+rgba(255,255,255,.12),
+
+transparent
+
+);
+
+animation:brilho 10s linear infinite;
+
+}
+
+@keyframes brilho{
+
+0%{
+
+transform:translate(-100%,-100%);
+
+}
+
+100%{
+
+transform:translate(100%,100%);
+
+}
+
+                }
+  
