@@ -1,25 +1,23 @@
-// ==============================
+// ===================================
 // BIBLIOTECA DE POESIAS
 // Parte 1
-// ==============================
+// ===================================
 
-// Banco de poesias
+// Banco de dados
 const poesias = [
 
 {
-    id:1,
+    id: 1,
 
-    titulo:"Basorexia",
+    titulo: "Basorexia",
 
-    categoria:"Romântica",
+    categoria: "Romântica",
 
-    data:"14/07/2026",
+    data: "14/07/2026",
 
-    dedicatoria:"Para aquela que despertou em mim um amor que eu desconhecia.",
+    dedicatoria: "Para aquela que mudou meu coração.",
 
-    favorita:false,
-
-    texto:`Alguns nem mesmo sonham
+    texto: `Alguns nem mesmo sonham
 com o significado dessa palavra.
 
 Alguns nunca experimentaram.
@@ -37,116 +35,89 @@ Deus...
 Sinto como se fosse um pecador
 por desejar tanto.
 
-Mas sei que
-o amor
+Mas sei
+que o amor
 jamais será pecado.`
+
 },
 
 {
-    id:2,
+    id: 2,
 
-    titulo:"Silêncio",
+    titulo: "Silêncio",
 
-    categoria:"Melancólica",
+    categoria: "Melancólica",
 
-    data:"01/06/2026",
+    data: "10/07/2026",
 
-    dedicatoria:"",
+    dedicatoria: "",
 
-    favorita:false,
-
-    texto:`O silêncio
-também grita.
-
-Ele fala
-quando ninguém escuta.
+    texto: `O silêncio
+também fala.
 
 Ele abraça
-quem o mundo esqueceu.`
+quem ninguém abraçou.
+
+Ele permanece
+quando todos vão embora.`
+
 },
 
 {
-    id:3,
+    id: 3,
 
-    titulo:"Esperança",
+    titulo: "Esperança",
 
-    categoria:"Esperança",
+    categoria: "Esperança",
 
-    data:"20/05/2026",
+    data: "05/07/2026",
 
-    dedicatoria:"Para todos que ainda acreditam.",
+    dedicatoria: "Para quem ainda acredita.",
 
-    favorita:false,
+    texto: `Mesmo na noite
+mais escura,
 
-    texto:`Mesmo a noite
-mais escura
+sempre existe
+um novo amanhecer.`
 
-não consegue impedir
-
-o nascimento
-de um novo amanhecer.`
 }
 
 ];
 
-// ==============================
-// ELEMENTOS HTML
-// ==============================
+// ==========================
+// Elementos da página
+// ==========================
 
 const biblioteca = document.getElementById("biblioteca");
 
-const pesquisa = document.getElementById("pesquisa");
+// ==========================
+// Criar Card
+// ==========================
 
-const categorias = document.getElementById("categorias");
+function criarCard(poesia){
 
-const capa = document.getElementById("capaCategoria");
-
-
-// ==============================
-// CRIA UM CARD
-// ==============================
-
-function criarCard(poema){
+const dedicatoria = poesia.dedicatoria
+? `<div class="dedicatoria">💌 ${poesia.dedicatoria}</div>`
+: "";
 
 return `
 
-<div class="card categoria-${poema.categoria.toLowerCase()}">
+<div class="card">
 
-<h2>${poema.titulo}</h2>
+<h2>${poesia.titulo}</h2>
 
 <div class="categoria">
-
-📚 ${poema.categoria}
-
+📚 ${poesia.categoria}
 </div>
 
 <div class="data">
-
-📅 ${poema.data}
-
+📅 ${poesia.data}
 </div>
 
-${
-poema.dedicatoria != ""
-
-?
-
-`<div class="dedicatoria">
-
-💌 ${poema.dedicatoria}
-
-</div>`
-
-:
-
-""
-
-}
+${dedicatoria}
 
 <div class="texto">
-
-${poema.texto}
-
+${poesia.texto}
 </div>
 
 </div>
@@ -155,189 +126,165 @@ ${poema.texto}
 
 }
 
-
-// ==============================
-// MOSTRAR POESIAS
-// ==============================
+// ==========================
+// Mostrar poesias
+// ==========================
 
 function mostrarPoesias(lista){
 
-biblioteca.innerHTML="";
+biblioteca.innerHTML = "";
 
-if(lista.length==0){
+if(lista.length === 0){
 
-biblioteca.innerHTML=`
-
-<h2>
-
-Nenhuma poesia encontrada.
-
-</h2>
-
+biblioteca.innerHTML = `
+<h2>Nenhuma poesia encontrada.</h2>
 `;
 
 return;
 
 }
 
-lista.forEach(poema=>{
+lista.forEach(poesia=>{
 
-biblioteca.innerHTML+=criarCard(poema);
+biblioteca.innerHTML += criarCard(poesia);
 
 });
 
 }
 
-
-// ==============================
-// MOSTRAR TODAS
-// ==============================
+// ==========================
+// Inicialização
+// ==========================
 
 mostrarPoesias(poesias);
 
-// ==============================
+// ===================================
 // PARTE 2
-// Pesquisa + Categorias + Tema
-// ==============================
+// Pesquisa + Categorias + Capas
+// ===================================
+
+// Elementos
+const pesquisa = document.getElementById("pesquisa");
+const seletorCategoria = document.getElementById("categorias");
+const capaCategoria = document.getElementById("capaCategoria");
 
 // Atualiza a capa da categoria
 function atualizarCapa(categoria){
 
-switch(categoria){
+    let titulo = "📚 Todas as Poesias";
+    let descricao = "Escolha uma categoria para começar.";
+    let fundo = "linear-gradient(135deg,#222,#444)";
 
-case "Romântica":
+    switch(categoria){
 
-capa.style.background="linear-gradient(135deg,#6b0f1a,#b91372)";
+        case "Romântica":
 
-capa.innerHTML=`
-<h2>❤️ Poesias Românticas</h2>
-<p>Versos escritos para quem faz o coração acelerar.</p>
-`;
-break;
+            titulo = "❤️ Poesias Românticas";
+            descricao = "Versos escritos pelo coração.";
+            fundo = "linear-gradient(135deg,#5f0a87,#a4508b)";
+            break;
 
-case "Melancólica":
+        case "Melancólica":
 
-capa.style.background="linear-gradient(135deg,#16222A,#3A6073)";
+            titulo = "🌧️ Poesias Melancólicas";
+            descricao = "Palavras nascidas da saudade.";
+            fundo = "linear-gradient(135deg,#16222A,#3A6073)";
+            break;
 
-capa.innerHTML=`
-<h2>🌧️ Poesias Melancólicas</h2>
-<p>Palavras que nasceram do silêncio e da saudade.</p>
-`;
-break;
+        case "Reflexiva":
 
-case "Reflexiva":
+            titulo = "🍂 Poesias Reflexivas";
+            descricao = "Pensamentos transformados em versos.";
+            fundo = "linear-gradient(135deg,#614385,#516395)";
+            break;
 
-capa.style.background="linear-gradient(135deg,#614385,#516395)";
+        case "Esperança":
 
-capa.innerHTML=`
-<h2>🍂 Poesias Reflexivas</h2>
-<p>Textos para pensar, sentir e amadurecer.</p>
-`;
-break;
+            titulo = "🌅 Poesias de Esperança";
+            descricao = "Onde existe fé, existe um novo amanhecer.";
+            fundo = "linear-gradient(135deg,#56CCF2,#2F80ED)";
+            break;
 
-case "Esperança":
+        case "Intensa":
 
-capa.style.background="linear-gradient(135deg,#56CCF2,#2F80ED)";
+            titulo = "🔥 Poesias Intensas";
+            descricao = "Sentimentos escritos sem medo.";
+            fundo = "linear-gradient(135deg,#000000,#8E0E00)";
+            break;
 
-capa.innerHTML=`
-<h2>🌅 Poesias de Esperança</h2>
-<p>Mesmo depois da noite, sempre existe um amanhecer.</p>
-`;
-break;
+    }
 
-case "Intensa":
+    capaCategoria.style.background = fundo;
 
-capa.style.background="linear-gradient(135deg,#000000,#8E0E00)";
-
-capa.innerHTML=`
-<h2>🔥 Poesias Intensas</h2>
-<p>Sentimentos fortes escritos sem medo.</p>
-`;
-break;
-
-default:
-
-capa.style.background="linear-gradient(135deg,#222,#444)";
-
-capa.innerHTML=`
-<h2>📚 Todas as Poesias</h2>
-<p>Escolha uma categoria para começar.</p>
-`;
+    capaCategoria.innerHTML = `
+        <h2>${titulo}</h2>
+        <p>${descricao}</p>
+    `;
 
 }
 
-}
+// Pesquisa e filtro
+function filtrarPoesias(){
 
-// ==============================
-// PESQUISA + FILTRO
-// ==============================
+    const textoPesquisa = pesquisa.value.toLowerCase().trim();
 
-function filtrar(){
+    const categoriaSelecionada = seletorCategoria.value;
 
-const texto = pesquisa.value.toLowerCase();
+    const resultado = poesias.filter(poesia => {
 
-const categoria = categorias.value;
+        const correspondeTexto =
 
-let resultado = poesias.filter(poema=>{
+            poesia.titulo.toLowerCase().includes(textoPesquisa) ||
 
-const encontrouTexto=
+            poesia.texto.toLowerCase().includes(textoPesquisa) ||
 
-poema.titulo.toLowerCase().includes(texto)
+            poesia.dedicatoria.toLowerCase().includes(textoPesquisa) ||
 
-||
+            poesia.categoria.toLowerCase().includes(textoPesquisa);
 
-poema.texto.toLowerCase().includes(texto)
+        const correspondeCategoria =
 
-||
+            categoriaSelecionada === "Todas" ||
 
-poema.categoria.toLowerCase().includes(texto)
+            poesia.categoria === categoriaSelecionada;
 
-||
+        return correspondeTexto && correspondeCategoria;
 
-poema.dedicatoria.toLowerCase().includes(texto);
+    });
 
-const encontrouCategoria=
+    mostrarPoesias(resultado);
 
-categoria==="Todas"
-
-||
-
-poema.categoria===categoria;
-
-return encontrouTexto && encontrouCategoria;
-
-});
-
-mostrarPoesias(resultado);
-
-atualizarCapa(categoria);
+    atualizarCapa(categoriaSelecionada);
 
 }
 
-// ==============================
-// EVENTOS
-// ==============================
+// Eventos
+pesquisa.addEventListener("input", filtrarPoesias);
 
-pesquisa.addEventListener("keyup",filtrar);
+seletorCategoria.addEventListener("change", filtrarPoesias);
 
-categorias.addEventListener("change",filtrar);
+// Inicializa a capa
+atualizarCapa("Todas");
+
+//===================================
+// PARTE 3
+// Tema + Favoritos
+//===================================
 
 
-// ==============================
-// TEMA CLARO E ESCURO
-// ==============================
+// ---------- TEMA ----------
 
-const botaoTema=document.getElementById("tema");
+const botaoTema = document.getElementById("tema");
 
-let temaSalvo=localStorage.getItem("tema");
+const temaSalvo = localStorage.getItem("tema");
 
 if(temaSalvo){
 
-document.body.className=temaSalvo;
+document.body.className = temaSalvo;
 
-botaoTema.textContent=
+botaoTema.textContent =
 
-temaSalvo==="dark"
+temaSalvo=="dark"
 
 ?
 
@@ -349,7 +296,8 @@ temaSalvo==="dark"
 
 }
 
-botaoTema.addEventListener("click",()=>{
+
+botaoTema.onclick=()=>{
 
 if(document.body.classList.contains("dark")){
 
@@ -357,9 +305,9 @@ document.body.classList.remove("dark");
 
 document.body.classList.add("light");
 
-botaoTema.textContent="☀️";
-
 localStorage.setItem("tema","light");
+
+botaoTema.textContent="☀️";
 
 }else{
 
@@ -367,50 +315,117 @@ document.body.classList.remove("light");
 
 document.body.classList.add("dark");
 
-botaoTema.textContent="🌙";
-
 localStorage.setItem("tema","dark");
+
+botaoTema.textContent="🌙";
 
 }
 
-});
+}
 
 
-// ==============================
-// INICIAR CAPA
-// ==============================
 
-atualizarCapa("Todas");
+// ---------- FAVORITOS ----------
 
-// ==============================
-// PARTE 3
-// Favoritos + LocalStorage
-// ==============================
+let favoritos=
 
-// Carregar favoritos salvos
-const favoritosSalvos = JSON.parse(localStorage.getItem("favoritos")) || [];
+JSON.parse(localStorage.getItem("favoritos"))||[];
 
-// Atualiza o array de poesias
-poesias.forEach(poema => {
-    poema.favorita = favoritosSalvos.includes(poema.id);
-});
 
-// Sobrescreve a função criarCard para incluir o botão de favorito
-function criarCard(poema){
 
-return `
+function favorito(id){
 
-<div class="card categoria-${poema.categoria.toLowerCase()}">
+if(favoritos.includes(id)){
+
+favoritos=favoritos.filter(x=>x!=id);
+
+}else{
+
+favoritos.push(id);
+
+}
+
+localStorage.setItem(
+
+"favoritos",
+
+JSON.stringify(favoritos)
+
+);
+
+filtrarPoesias();
+
+}
+
+
+
+// ---------- NOVA VERSÃO DOS CARDS ----------
+
+function criarCard(poesia){
+
+const cor={
+
+"Romântica":"romantica",
+
+"Melancólica":"melancolica",
+
+"Esperança":"esperanca",
+
+"Reflexiva":"reflexiva",
+
+"Intensa":"intensa"
+
+}[poesia.categoria]||"";
+
+
+
+const icone=
+
+favoritos.includes(poesia.id)
+
+?
+
+"❤️"
+
+:
+
+"🤍";
+
+
+
+const dedicatoria=
+
+poesia.dedicatoria!==""
+
+?
+
+`<div class="dedicatoria">
+
+💌 ${poesia.dedicatoria}
+
+</div>`
+
+:
+
+"";
+
+
+
+return`
+
+<div class="card ${cor}">
 
 <div class="topo-card">
 
-<h2>${poema.titulo}</h2>
+<h2>${poesia.titulo}</h2>
 
 <button
-class="favorito"
-onclick="alternarFavorito(${poema.id})">
 
-${poema.favorita ? "❤️" : "🤍"}
+class="btnFavorito"
+
+onclick="favorito(${poesia.id})">
+
+${icone}
 
 </button>
 
@@ -418,33 +433,21 @@ ${poema.favorita ? "❤️" : "🤍"}
 
 <div class="categoria">
 
-📚 ${poema.categoria}
+📚 ${poesia.categoria}
 
 </div>
 
 <div class="data">
 
-📅 ${poema.data}
+📅 ${poesia.data}
 
 </div>
 
-${poema.dedicatoria != ""
-
-?
-
-`<div class="dedicatoria">
-
-💌 ${poema.dedicatoria}
-
-</div>`
-
-:
-
-""}
+${dedicatoria}
 
 <div class="texto">
 
-${poema.texto}
+${poesia.texto}
 
 </div>
 
@@ -454,99 +457,80 @@ ${poema.texto}
 
 }
 
-// Alterna favorito
-function alternarFavorito(id){
 
-const poema = poesias.find(p => p.id == id);
 
-poema.favorita = !poema.favorita;
-
-const favoritos = poesias
-.filter(p => p.favorita)
-.map(p => p.id);
-
-localStorage.setItem(
-"favoritos",
-JSON.stringify(favoritos)
-);
-
-filtrar();
-
-}
-
-// ==============================
-// BOTÃO FAVORITAS
-// ==============================
-
-const botaoFavoritos =
-document.getElementById("favoritos");
-
-let mostrandoFavoritos = false;
-
-botaoFavoritos.addEventListener("click",()=>{
-
-mostrandoFavoritos = !mostrandoFavoritos;
-
-if(mostrandoFavoritos){
-
-const lista = poesias.filter(p=>p.favorita);
-
-mostrarPoesias(lista);
-
-botaoFavoritos.textContent="📚 Todas";
-
-}else{
-
-filtrar();
-
-botaoFavoritos.textContent="❤️ Favoritas";
-
-}
-
-});
-
-// ==============================
-// CONTADOR
-// ==============================
+// ---------- CONTADOR ----------
 
 const contador=document.createElement("p");
 
-contador.style.marginTop="20px";
-
-contador.style.fontWeight="bold";
+contador.id="contador";
 
 document.querySelector("header")
+
 .appendChild(contador);
 
-// Sobrescreve mostrarPoesias
-function mostrarPoesias(lista){
 
-biblioteca.innerHTML="";
+
+// ---------- ATUALIZA A TELA ----------
+
+const mostrarOriginal=mostrarPoesias;
+
+
+
+mostrarPoesias=function(lista){
 
 contador.innerHTML=
 
-`📖 ${lista.length} poesia(s) encontrada(s)`;
+`📖 ${lista.length} poesia(s)`;
 
-if(lista.length==0){
-
-biblioteca.innerHTML=`
-
-<h2>
-
-Nenhuma poesia encontrada.
-
-</h2>
-
-`;
-
-return;
+mostrarOriginal(lista);
 
 }
 
-lista.forEach(poema=>{
 
-biblioteca.innerHTML+=criarCard(poema);
 
-});
+// ---------- BOTÃO FAVORITAS ----------
+
+const botaoFavoritos=
+
+document.getElementById("favoritos");
+
+
+
+let apenasFavoritas=false;
+
+
+
+botaoFavoritos.onclick=()=>{
+
+apenasFavoritas=!apenasFavoritas;
+
+
+
+if(apenasFavoritas){
+
+botaoFavoritos.innerHTML="📚 Todas";
+
+mostrarPoesias(
+
+poesias.filter(p=>
+
+favoritos.includes(p.id)
+
+)
+
+);
+
+}else{
+
+botaoFavoritos.innerHTML="❤️ Favoritas";
+
+filtrarPoesias();
 
 }
+
+}
+
+
+
+filtrarPoesias();
